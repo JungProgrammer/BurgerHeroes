@@ -30,6 +30,8 @@ public class BannerAd : MonoBehaviour
     private void Start()
     {
         Advertisement.Banner.SetPosition(_bannerPosition);
+
+        StartCoroutine(LoadBannerAfterStartDelay());
     }
 
 
