@@ -18,10 +18,14 @@ namespace BurgerHeroes.Player
         
         [SerializeField] 
         private float _moveLateralSpeed;
+        
 
 
         private InputManager _inputManager;
-        
+
+
+        private Vector2 _worldUnitsInCamera;
+        private Vector2 _worldToPixelAmount;
 
         private Rigidbody _rigidbody;
 
@@ -41,6 +45,12 @@ namespace BurgerHeroes.Player
 
         private void Awake()
         {
+            _worldUnitsInCamera.y = Camera.main.orthographicSize * 2;
+            _worldUnitsInCamera.x = _worldUnitsInCamera.y * Screen.width / Screen.height;
+
+            _worldToPixelAmount.x = Screen.width / _worldUnitsInCamera.x;
+            _worldToPixelAmount.y = Screen.height / _worldUnitsInCamera.y;
+            
             _inputManager = InputManager.Instance;
             _rigidbody = GetComponent<Rigidbody>();
             _sceneWidth = Screen.width;
@@ -84,10 +94,17 @@ namespace BurgerHeroes.Player
                 if (_pressedPoint == Vector3.zero)
                     _pressedPoint = new Vector3(currentTouchPosition.x, currentTouchPosition.y, 0);
                 
-                float deltaPositionX = currentTouchPosition.x - _pressedPoint.x;
-
+                // float deltaPositionX = currentTouchPosition.x - _pressedPoint.x;
+                float deltaPositionX = (currentTouchPosition.x - _pressedPoint.x) / _worldToPixelAmount.x *
+                                       _moveLateralSpeed;
+                
+                // _rigidbody.position = new Vector3(
+                //     _startPositionBeforeLateralMovement.x + deltaPositionX * _moveLateralSpeed / _sceneWidth,
+                //     _rigidbody.position.y,
+                //     _rigidbody.position.z);
+                
                 _rigidbody.position = new Vector3(
-                    _startPositionBeforeLateralMovement.x + deltaPositionX * _moveLateralSpeed / _sceneWidth,
+                    _startPositionBeforeLateralMovement.x + deltaPositionX,
                     _rigidbody.position.y,
                     _rigidbody.position.z);
 
