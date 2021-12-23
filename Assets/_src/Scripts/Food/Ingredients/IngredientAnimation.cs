@@ -20,6 +20,9 @@ namespace BurgerHeroes.Food
                     transform.position.z),
                 2,
                 false).SetLoops(-1, LoopType.Yoyo);
+            transform.DOBlendableScaleBy(
+                new Vector3(0.2f, 0.2f, 0.2f),
+                UnityEngine.Random.Range(1.25f, 1.75f)).SetLoops(-1, LoopType.Yoyo);
         }
 
 
