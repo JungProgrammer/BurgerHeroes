@@ -48,6 +48,12 @@ namespace BurgerHeroes.UI
             LoadLevelText();
         }
 
+        private void Start() {
+            if (!PlayerPrefs.HasKey("LevelNumber")) {
+                _startGameplayEvent.Raise();
+            }
+        }
+
 
         private void LoadLevelText()
         {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.2
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.036056794, g: 0.04514281, b: 0.061384678, a: 0.2}
+  m_IndirectSpecularColor: {r: 0.036056835, g: 0.04514291, b: 0.061384827, a: 0.2}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3917,7 +3917,7 @@ MonoBehaviour:
   _breadBottomTransform: {fileID: 982688864}
   _plateMeshRenderer: {fileID: 104101065}
   _randomXAmplitudeForCollectedParts: 4
-  _collectAnimationSpeed: 8
+  _collectAnimationSpeed: 4
   _initialHamburgerIngredientKeys: 00000000020000000300000001000000
   _coinPrefab: {fileID: 647108699, guid: 93ea317090465bc44a7a14340f108fc9, type: 3}
   _hamburgerTurnedToCoins: {fileID: 11400000, guid: ea60bf4ece8aae44786a1e75c17d4471, type: 2}

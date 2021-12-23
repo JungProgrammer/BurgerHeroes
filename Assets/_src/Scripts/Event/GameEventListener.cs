@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 namespace BurgerHeroes.Event
 {
+	[DefaultExecutionOrder(-10)]
 	public class GameEventListener : MonoBehaviour
 	{
 		[SerializeField, AssetsOnly, Required]
