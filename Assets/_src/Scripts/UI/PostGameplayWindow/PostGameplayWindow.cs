@@ -1,9 +1,10 @@
-using System.Collections.Generic;
 using BurgerHeroes.Event;
 using BurgerHeroes.Food;
 using BurgerHeroes.Levels;
 using DG.Tweening;
 using Sirenix.OdinInspector;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,6 +46,10 @@ namespace BurgerHeroes.UI
         private RectTransform _collectButton;
 
 
+        [SerializeField, ChildGameObjectsOnly, Required]
+        private RectTransform _multiplyButton;
+
+
         [SerializeField, Required] 
         private Image _background;
 
@@ -60,6 +65,27 @@ namespace BurgerHeroes.UI
         [SerializeField, AssetsOnly, Required] 
         private GameEvent _openNextLevel;
 
+        [Title("Multiplier Arrow")]
+        [SerializeField, ChildGameObjectsOnly, Required]
+        private RectTransform _multiplierArrow;
+        [SerializeField, ChildGameObjectsOnly, Required]
+        private RectTransform _multiplierArrowRotationPoint;
+        private bool _multiplierArrowRotates;
+        [SerializeField, Required]
+        private float _multiplierArrowRotationSpeed;
+        [SerializeField, Required]
+        private float _multiplierArrowLeftBorder;
+        [SerializeField, Required]
+        private float _multiplierArrowRightBorder;
+        [SerializeField, Required]
+        private float _multiplierArrowMaxValueAngle;
+        [SerializeField, Required]
+        private float _multiplierArrowMaxValueDispersion;
+        [SerializeField, Required]
+        private float _multiplierArrowMaxMultiplier;
+        [SerializeField, Required]
+        private float _multiplierArrowMinMultiplier;
+
 
         private Vector3 _startLevelPanelPosition;
 
@@ -70,6 +96,8 @@ namespace BurgerHeroes.UI
         private Vector3 _startCollectedRecipeIngredientsPosition;
 
         private Vector3 _startCollectButtonPosition;
+
+        private Vector3 _startMultiplyButtonPosition;
 
         private Color _startBackgroundColor;
         
@@ -83,6 +111,8 @@ namespace BurgerHeroes.UI
         private Vector3 _closedCollectedRecipeIngredientsPosition;
         
         private Vector3 _closedCollectButtonPosition;
+
+        private Vector3 _closedMultiplyButtonPosition;
 
         private Color _closedColor;
         
@@ -114,6 +144,8 @@ namespace BurgerHeroes.UI
 
             _startCollectButtonPosition = _collectButton.position;
 
+            _startMultiplyButtonPosition = _multiplyButton.position;
+
             _startBackgroundColor = _background.color;
             
             _closedLevelPanelPosition = new Vector3(
@@ -140,7 +172,12 @@ namespace BurgerHeroes.UI
                 _startCollectButtonPosition.x,
                 _startCollectButtonPosition.y - startHeightDelta,
                 _startCollectButtonPosition.z);
-            
+
+            _closedMultiplyButtonPosition = new Vector3(
+                _startCollectButtonPosition.x,
+                _startCollectButtonPosition.y - startHeightDelta,
+                _startCollectButtonPosition.z);
+
             _closedColor = new Color(
                 _startBackgroundColor.r,
                 _startBackgroundColor.g,
@@ -170,6 +207,8 @@ namespace BurgerHeroes.UI
 
         public void OpenWindow()
         {
+            //StartCoroutine(RotateArrow());
+
             _levelPanel.position = _closedLevelPanelPosition;
             _starsPanel.transform.position = _closedStarsPanelPosition;
             _gotCoinsPanel.position = _closedGotCoinsPanelPosition;
@@ -195,7 +234,10 @@ namespace BurgerHeroes.UI
             _gotCoinsText.text = "+" + _collectedInLevelCoinsView.CollectedCoinsCount.ToString();
         }
         
-        
+        public void MultiplierCollect() {
+            
+        }
+
         public void CloseWindow()
         {
             Color superimposedColor = new Color(
@@ -217,6 +259,37 @@ namespace BurgerHeroes.UI
             {
                 _openNextLevel.Raise();
             });
+        }
+
+        private IEnumerator RotateArrow() {
+            _multiplierArrowRotates = true;
+            Vector3 rotationAxis = new Vector3(0, 0, 1);
+            while (_multiplierArrowRotates) {
+                while (_multiplierArrow.rotation.eulerAngles.z < _multiplierArrowLeftBorder
+                    && _multiplierArrowRotates) {
+                    _multiplierArrow.RotateAround(
+                        _multiplierArrowRotationPoint.position,
+                        rotationAxis,
+                        _multiplierArrowRotationSpeed*Time.deltaTime);
+                    Debug.Log(_multiplierArrow.rotation.eulerAngles.z);
+                    yield return null;
+                }
+                _multiplierArrow.rotation = Quaternion.Euler(0, 0, _multiplierArrowLeftBorder);
+                yield return null;
+
+                while (_multiplierArrow.rotation.eulerAngles.z > _multiplierArrowRightBorder
+                    && _multiplierArrow.rotation.eulerAngles.z < 270
+                    && _multiplierArrowRotates) {
+                    _multiplierArrow.RotateAround(
+                        _multiplierArrowRotationPoint.position,
+                        -rotationAxis,
+                        _multiplierArrowRotationSpeed * Time.deltaTime);
+                    Debug.Log(_multiplierArrow.rotation.eulerAngles.z);
+                    yield return null;
+                }
+                _multiplierArrow.rotation = Quaternion.Euler(0, 0, _multiplierArrowRightBorder);
+                yield return null;
+            }
         }
     }   
 }

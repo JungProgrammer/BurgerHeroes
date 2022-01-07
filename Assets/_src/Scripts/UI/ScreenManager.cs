@@ -49,5 +49,9 @@ namespace BurgerHeroes.UI
             _postGameplayWindow.gameObject.SetActive(true);
             _coinsPanel.gameObject.SetActive(false);
         }
+
+        public void OpenDefeatScreen() {
+
+        }
     }   
 }
