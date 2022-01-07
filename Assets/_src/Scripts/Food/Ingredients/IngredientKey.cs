@@ -5,6 +5,11 @@
         Cheese,
         Lettuce,
         Meat,
-        Tomato
+        Tomato,
+        Bacon,
+        Cucumber,
+        Egg,
+        Jalapeno,
+        Onion
     }
 }

@@ -26,6 +26,22 @@ namespace BurgerHeroes.UI
         private TomatoIngredientRecipe _tomatoIngredient;
 
 
+        [SerializeField, AssetsOnly, Required]
+        private BaconIngredientRecipe _baconIngredient;
+
+        [SerializeField, AssetsOnly, Required]
+        private CucumberIngredientRecipe _cucumberIngredient;
+
+        [SerializeField, AssetsOnly, Required]
+        private EggIngredientRecipe _eggIngredient;
+
+        [SerializeField, AssetsOnly, Required]
+        private JalapenoIngredientRecipe _jalapenoIngredient;
+
+        [SerializeField, AssetsOnly, Required]
+        private OnionIngredientRecipe _onionIngredient;
+
+
         private List<IngredientRecipe> _showedIngredientRecipes;
 
 
@@ -49,6 +65,21 @@ namespace BurgerHeroes.UI
                     break;
                 case IngredientKey.Tomato:
                     newIngredientRecipe = _tomatoIngredient;
+                    break;
+                case IngredientKey.Bacon:
+                    newIngredientRecipe = _baconIngredient;
+                    break;
+                case IngredientKey.Cucumber:
+                    newIngredientRecipe = _cucumberIngredient;
+                    break;
+                case IngredientKey.Jalapeno:
+                    newIngredientRecipe = _jalapenoIngredient;
+                    break;
+                case IngredientKey.Onion:
+                    newIngredientRecipe = _onionIngredient;
+                    break;
+                case IngredientKey.Egg:
+                    newIngredientRecipe = _eggIngredient;
                     break;
             }
 
