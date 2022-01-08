@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using BurgerHeroes.Input;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.Touch;
@@ -12,6 +13,10 @@ namespace BurgerHeroes.Player
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMovement : MonoBehaviour
     {
+        [SerializeField, ChildGameObjectsOnly, Required]
+        private Transform _viewTransform;
+
+
         [SerializeField] 
         private float _moveForwardSpeed;
 
@@ -77,8 +82,55 @@ namespace BurgerHeroes.Player
         {
             Move();
         }
-        
-        
+
+
+        //private void Move()
+        //{
+        //    if (!_isMoving)
+        //        return;
+
+
+        //    _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, _moveForwardSpeed);
+
+        //    if (_isHoldTouch)
+        //    {
+        //        Vector2 currentTouchPosition = _inputManager.GetTouchPosition();
+
+        //        if (_pressedPoint == Vector3.zero)
+        //            _pressedPoint = new Vector3(currentTouchPosition.x, currentTouchPosition.y, 0);
+
+        //        // float deltaPositionX = currentTouchPosition.x - _pressedPoint.x;
+        //        float deltaPositionX = (currentTouchPosition.x - _pressedPoint.x) / _worldToPixelAmount.x *
+        //                               _moveLateralSpeed;
+
+        //        // _rigidbody.position = new Vector3(
+        //        //     _startPositionBeforeLateralMovement.x + deltaPositionX * _moveLateralSpeed / _sceneWidth,
+        //        //     _rigidbody.position.y,
+        //        //     _rigidbody.position.z);
+
+        //        _rigidbody.position = new Vector3(
+        //            _startPositionBeforeLateralMovement.x + deltaPositionX * _moveLateralSpeed / _sceneWidth,
+        //            _rigidbody.position.y,
+        //            _rigidbody.position.z);
+
+        //        SetLimitPosition();
+        //    }
+        //}
+
+
+        //private void SetLimitPosition()
+        //{
+        //    if (_rigidbody.position.x <= _leftLimiterPosition.x)
+        //        _rigidbody.position = new Vector3(_leftLimiterPosition.x,
+        //            _rigidbody.position.y,
+        //            _rigidbody.position.z);
+        //    if(_rigidbody.position.x >= _rightLimiterPosition.x)
+        //        _rigidbody.position = new Vector3(_rightLimiterPosition.x,
+        //            _rigidbody.position.y,
+        //            _rigidbody.position.z);
+        //}
+
+
         private void Move()
         {
             if (!_isMoving)
@@ -86,27 +138,22 @@ namespace BurgerHeroes.Player
 
 
             _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, _moveForwardSpeed);
-            
+
             if (_isHoldTouch)
             {
                 Vector2 currentTouchPosition = _inputManager.GetTouchPosition();
-        
+
                 if (_pressedPoint == Vector3.zero)
                     _pressedPoint = new Vector3(currentTouchPosition.x, currentTouchPosition.y, 0);
-                
-                // float deltaPositionX = currentTouchPosition.x - _pressedPoint.x;
+
                 float deltaPositionX = (currentTouchPosition.x - _pressedPoint.x) / _worldToPixelAmount.x *
                                        _moveLateralSpeed;
-                
-                // _rigidbody.position = new Vector3(
-                //     _startPositionBeforeLateralMovement.x + deltaPositionX * _moveLateralSpeed / _sceneWidth,
-                //     _rigidbody.position.y,
-                //     _rigidbody.position.z);
-                
-                _rigidbody.position = new Vector3(
-                    _startPositionBeforeLateralMovement.x + deltaPositionX,
-                    _rigidbody.position.y,
-                    _rigidbody.position.z);
+
+
+                _viewTransform.localPosition = new Vector3(
+                    _startPositionBeforeLateralMovement.x + deltaPositionX * _moveLateralSpeed / _sceneWidth,
+                    _viewTransform.localPosition.y,
+                    _viewTransform.localPosition.z);
 
                 SetLimitPosition();
             }
@@ -115,21 +162,21 @@ namespace BurgerHeroes.Player
 
         private void SetLimitPosition()
         {
-            if (_rigidbody.position.x <= _leftLimiterPosition.x)
-                _rigidbody.position = new Vector3(_leftLimiterPosition.x,
-                    _rigidbody.position.y,
-                    _rigidbody.position.z);
-            if(_rigidbody.position.x >= _rightLimiterPosition.x)
-                _rigidbody.position = new Vector3(_rightLimiterPosition.x,
-                    _rigidbody.position.y,
-                    _rigidbody.position.z);
+            if (_viewTransform.localPosition.x <= _leftLimiterPosition.x)
+                _viewTransform.localPosition = new Vector3(_leftLimiterPosition.x,
+                    _viewTransform.localPosition.y,
+                    _viewTransform.localPosition.z);
+            if (_viewTransform.localPosition.x >= _rightLimiterPosition.x)
+                _viewTransform.localPosition = new Vector3(_rightLimiterPosition.x,
+                    _viewTransform.localPosition.y,
+                    _viewTransform.localPosition.z);
         }
-        
-        
+
+
         private void OnStartTouch(Vector2 screenPosition, float time)
         {
             _pressedPoint = _inputManager.GetTouchPosition();
-            _startPositionBeforeLateralMovement = _rigidbody.position;
+            _startPositionBeforeLateralMovement = _viewTransform.localPosition;
             _isHoldTouch = true;
         }
         

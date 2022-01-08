@@ -17,7 +17,8 @@ namespace BurgerHeroes.Finish
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out PlayerMovement playerMovement))
+            if (other.TryGetComponent(out PlayerMovement playerMovement)
+                || other.TryGetComponent(out LavaChecker lavaChecker))
             {
                 _playerFinishedEvent.Raise();
             }
