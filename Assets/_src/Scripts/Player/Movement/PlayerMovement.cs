@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using BurgerHeroes.Input;
+using BurgerHeroes.Platforms;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
@@ -23,6 +24,10 @@ namespace BurgerHeroes.Player
         
         [SerializeField] 
         private float _moveLateralSpeed;
+
+
+        [SerializeField]
+        private LayerMask _platformLayer;
         
 
 
@@ -45,11 +50,21 @@ namespace BurgerHeroes.Player
         private Vector3 _startPositionBeforeLateralMovement;
 
 
+        private Transform _transform;
+
+        private float _currentRotation;
+
         private bool _isMoving;
-        
+        private bool _isRotating;
+
+
 
         private void Awake()
         {
+            _transform = transform;
+
+            _currentRotation = (_transform.eulerAngles.y > 180) ? _transform.eulerAngles.y - 360 : _transform.eulerAngles.y;
+
             _worldUnitsInCamera.y = Camera.main.orthographicSize * 2;
             _worldUnitsInCamera.x = _worldUnitsInCamera.y * Screen.width / Screen.height;
 
@@ -137,7 +152,11 @@ namespace BurgerHeroes.Player
                 return;
 
 
-            _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, _moveForwardSpeed);
+            //_rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, _moveForwardSpeed);
+            _rigidbody.velocity = _transform.forward * _moveForwardSpeed;
+            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
+
+            CheckCurvePlatform();
 
             if (_isHoldTouch)
             {
@@ -156,6 +175,84 @@ namespace BurgerHeroes.Player
                     _viewTransform.localPosition.z);
 
                 SetLimitPosition();
+            }
+        }
+
+
+        private void CheckCurvePlatform()
+        {
+            if (_isRotating)
+                return;
+
+            Ray ray = new Ray(_viewTransform.position + _transform.forward * 1.5f, Vector3.down);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, 1, _platformLayer))
+            {
+                if (hit.transform.gameObject != null)
+                {
+                    if (hit.transform.TryGetComponent(out CurvedPlatform curvedPlatform))
+                    {
+                        if (!curvedPlatform.Reached)
+                        {
+                            curvedPlatform.SetReached();
+                            RotateOnCurvedPlatform(curvedPlatform.RotateDegree);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private void RotateOnCurvedPlatform(float rotateDegree)
+        {
+            Debug.Log("ROTATE");    
+
+            _isRotating = true;
+
+            float rightAngle = (Mathf.Round(transform.eulerAngles.y) > 180) ? Mathf.Round(transform.eulerAngles.y) - 360 : Mathf.Round(transform.eulerAngles.y);
+            float delta;
+            _currentRotation += rotateDegree;
+
+
+            StartCoroutine(Rotate());
+
+
+            IEnumerator Rotate()
+            {
+                if (rightAngle > _currentRotation)
+                {
+                    while (rightAngle > _currentRotation + 0.35f)
+                    {
+                        delta = _moveForwardSpeed * 2.045f * Time.deltaTime;
+                        if (rightAngle - delta < _currentRotation)
+                        {
+                            delta = rightAngle - _currentRotation;
+                        }
+                        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y - delta, 0);
+                        rightAngle = (Mathf.Round(transform.eulerAngles.y) > 180) ? Mathf.Round(transform.eulerAngles.y) - 360 : Mathf.Round(transform.eulerAngles.y);
+                        //rightAngle = transform.eulerAngles.y - 360;
+                        yield return null;
+                    }
+                }
+                else
+                {
+                    while (rightAngle < _currentRotation - 0.35f)
+                    {
+                        delta = _moveForwardSpeed * 2.045f * Time.deltaTime;
+                        if (rightAngle + delta > _currentRotation)
+                        {
+                            delta = _currentRotation - rightAngle;
+                        }
+                        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + delta, 0);
+                        rightAngle = (Mathf.Round(transform.eulerAngles.y) > 180) ? transform.eulerAngles.y - 360 : transform.eulerAngles.y;
+                        yield return null;
+                    }
+                }
+
+                yield return new WaitForSeconds(0.01f);
+
+
+                _isRotating = false;
             }
         }
 
