@@ -11,7 +11,6 @@ using Touch = UnityEngine.Touch;
 
 namespace BurgerHeroes.Player
 {
-    [RequireComponent(typeof(Rigidbody))]
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField, ChildGameObjectsOnly, Required]
@@ -20,6 +19,10 @@ namespace BurgerHeroes.Player
 
         [SerializeField] 
         private float _moveForwardSpeed;
+
+
+        [SerializeField]
+        private float _rotatingSpeed;
 
         
         [SerializeField] 
@@ -36,8 +39,6 @@ namespace BurgerHeroes.Player
 
         private Vector2 _worldUnitsInCamera;
         private Vector2 _worldToPixelAmount;
-
-        private Rigidbody _rigidbody;
 
         private Vector3 _leftLimiterPosition;
         private Vector3 _rightLimiterPosition;
@@ -72,7 +73,6 @@ namespace BurgerHeroes.Player
             _worldToPixelAmount.y = Screen.height / _worldUnitsInCamera.y;
             
             _inputManager = InputManager.Instance;
-            _rigidbody = GetComponent<Rigidbody>();
             _sceneWidth = Screen.width;
 
             _isMoving = false;
@@ -153,8 +153,12 @@ namespace BurgerHeroes.Player
 
 
             //_rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, _moveForwardSpeed);
-            _rigidbody.velocity = _transform.forward * _moveForwardSpeed;
-            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
+
+            //_rigidbody.velocity = _transform.forward * _moveForwardSpeed;
+            //Debug.Log(_rigidbody.velocity);
+            //_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
+
+            _transform.Translate(Vector3.forward * _moveForwardSpeed * Time.deltaTime);
 
             CheckCurvePlatform();
 
@@ -184,7 +188,8 @@ namespace BurgerHeroes.Player
             if (_isRotating)
                 return;
 
-            Ray ray = new Ray(_viewTransform.position + _transform.forward * 1.5f, Vector3.down);
+            Ray ray = new Ray(_transform.position + _transform.forward * 1.5f, Vector3.down);
+            //Ray ray = new Ray(_transform.position - _transform.forward * 1.5f, Vector3.down);
 
             if (Physics.Raycast(ray, out RaycastHit hit, 1, _platformLayer))
             {
@@ -205,8 +210,6 @@ namespace BurgerHeroes.Player
 
         private void RotateOnCurvedPlatform(float rotateDegree)
         {
-            Debug.Log("ROTATE");    
-
             _isRotating = true;
 
             float rightAngle = (Mathf.Round(transform.eulerAngles.y) > 180) ? Mathf.Round(transform.eulerAngles.y) - 360 : Mathf.Round(transform.eulerAngles.y);
@@ -223,7 +226,7 @@ namespace BurgerHeroes.Player
                 {
                     while (rightAngle > _currentRotation + 0.35f)
                     {
-                        delta = _moveForwardSpeed * 2.045f * Time.deltaTime;
+                        delta = _rotatingSpeed * 2.17f * Time.deltaTime;
                         if (rightAngle - delta < _currentRotation)
                         {
                             delta = rightAngle - _currentRotation;
@@ -238,7 +241,7 @@ namespace BurgerHeroes.Player
                 {
                     while (rightAngle < _currentRotation - 0.35f)
                     {
-                        delta = _moveForwardSpeed * 2.045f * Time.deltaTime;
+                        delta = _rotatingSpeed * 2.045f * Time.deltaTime;
                         if (rightAngle + delta > _currentRotation)
                         {
                             delta = _currentRotation - rightAngle;
@@ -300,7 +303,7 @@ namespace BurgerHeroes.Player
         public void StopMovement()
         {
             _isMoving = false;
-            _rigidbody.velocity = Vector3.zero;
+            //_rigidbody.velocity = Vector3.zero;
         }
     }   
 }
