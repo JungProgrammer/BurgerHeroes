@@ -7382,6 +7382,7 @@ GameObject:
   - component: {fileID: 2144794101}
   - component: {fileID: 2144794102}
   - component: {fileID: 2144794103}
+  - component: {fileID: 2144794104}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7617,6 +7618,34 @@ MonoBehaviour:
       - m_Target: {fileID: 1034955031}
         m_TargetAssemblyTypeName: BurgerHeroes.UI.MainMenu, Assembly-CSharp
         m_MethodName: LoadMenuRecipeIngredients
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2144794104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144794094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc07f373520d6740bf88435407fbdb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: d5cdd706beb4f89418305a2401a8de14, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2144794100}
+        m_TargetAssemblyTypeName: BurgerHeroes.UI.ScreenManager, Assembly-CSharp
+        m_MethodName: OpenDefeatScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8043,6 +8072,7 @@ GameObject:
   - component: {fileID: 371795084913496356}
   - component: {fileID: 5644084131556232174}
   - component: {fileID: 5644084132794829013}
+  - component: {fileID: 1177495694572241700}
   m_Layer: 0
   m_Name: Chef
   m_TagString: Untagged
@@ -8050,6 +8080,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1177495694572241700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177495694572241699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc07f373520d6740bf88435407fbdb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: d5cdd706beb4f89418305a2401a8de14, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8061961546772002813}
+        m_TargetAssemblyTypeName: BurgerHeroes.Player.PlayerMovement, Assembly-CSharp
+        m_MethodName: StopMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1272150879581772618
 Transform:
   m_ObjectHideFlags: 0
