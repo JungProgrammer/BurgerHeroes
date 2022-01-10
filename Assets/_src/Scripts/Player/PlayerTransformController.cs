@@ -24,7 +24,7 @@ namespace BurgerHeroes.Player
 
         [SerializeField, ChildGameObjectsOnly, Required]
         private Transform _mainPlate;
-        
+
 
         private Quaternion _startRotation;
 
@@ -60,6 +60,8 @@ namespace BurgerHeroes.Player
 
         public void SetStartRotateAfterFinish()
         {
+            transform.rotation = Quaternion.identity;
+            _playerMeshView.transform.localPosition = Vector3.zero;
             _playerMeshView.transform.rotation = _startRotation;
             ShowIdlePlate();
         }
@@ -74,8 +76,8 @@ namespace BurgerHeroes.Player
         
         public void SetWinRotate()
         {
-            _playerMeshView.Rotate(45, 0, 0);
-            _playerMeshView.DORotate(new Vector3(0, 180, 0), 1);
+            _playerMeshView.Rotate(0, 180, 0);
+            _playerMeshView.Rotate(-45, 0, 0);
         }
     }   
 }

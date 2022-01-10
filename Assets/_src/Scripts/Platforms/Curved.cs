@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BurgerHeroes.Platforms
 {
-    public class CurvedPlatform : Platform
+    public class Curved : MonoBehaviour
     {
         [SerializeField]
         private float _rotateDegree;

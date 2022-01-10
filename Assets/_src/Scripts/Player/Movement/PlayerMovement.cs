@@ -195,12 +195,12 @@ namespace BurgerHeroes.Player
             {
                 if (hit.transform.gameObject != null)
                 {
-                    if (hit.transform.TryGetComponent(out CurvedPlatform curvedPlatform))
+                    if (hit.transform.TryGetComponent(out Curved curved))
                     {
-                        if (!curvedPlatform.Reached)
+                        if (!curved.Reached)
                         {
-                            curvedPlatform.SetReached();
-                            RotateOnCurvedPlatform(curvedPlatform.RotateDegree);
+                            curved.SetReached();
+                            RotateOnCurvedPlatform(curved.RotateDegree);
                         }
                     }
                 }
@@ -213,6 +213,7 @@ namespace BurgerHeroes.Player
             _isRotating = true;
 
             float rightAngle = (Mathf.Round(transform.eulerAngles.y) > 180) ? Mathf.Round(transform.eulerAngles.y) - 360 : Mathf.Round(transform.eulerAngles.y);
+            Debug.Log(rightAngle);
             float delta;
             _currentRotation += rotateDegree;
 
@@ -304,6 +305,12 @@ namespace BurgerHeroes.Player
         {
             _isMoving = false;
             //_rigidbody.velocity = Vector3.zero;
+        }
+
+
+        public void OnFinished()
+        {
+            _currentRotation = 0;
         }
     }   
 }

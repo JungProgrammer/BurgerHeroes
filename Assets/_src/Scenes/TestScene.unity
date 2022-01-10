@@ -1018,11 +1018,11 @@ MonoBehaviour:
   _lettuceIngredient: {fileID: 5056202371609827696, guid: b14119d2538672b49a4dc2e622ae1d09, type: 3}
   _meatIngredient: {fileID: 6149780969729189523, guid: 796c222a96c026443a1d68915832abb0, type: 3}
   _tomatoIngredient: {fileID: 8490656068703562102, guid: c6917619609a5e441a3e884c27d9ab5d, type: 3}
-  _baconIngredient: {fileID: 0}
-  _cucumberIngredient: {fileID: 0}
-  _eggIngredient: {fileID: 0}
-  _jalapenoIngredient: {fileID: 0}
-  _onionIngredient: {fileID: 0}
+  _baconIngredient: {fileID: 2706955441534039464, guid: feab3e722cc5cd44eb69a3fdc8da5737, type: 3}
+  _cucumberIngredient: {fileID: 1089102073304801712, guid: 77b6ec4d1db609f4d8b42ca624c6b497, type: 3}
+  _eggIngredient: {fileID: 8573640804907711145, guid: ebaab28ccdf046b4da87e628d7ce5707, type: 3}
+  _jalapenoIngredient: {fileID: 8270403655163669209, guid: fdd730af6aadb2447b87e4b3bde3560b, type: 3}
+  _onionIngredient: {fileID: 176327417639559600, guid: 2c252c182dd3cd647a3943118db68d3e, type: 3}
 --- !u!1 &297662755
 GameObject:
   m_ObjectHideFlags: 0
@@ -5899,7 +5899,7 @@ MonoBehaviour:
   _levelHolder: {fileID: 1678066625}
   _levelsSettings: {fileID: 11400000, guid: cc1aa09888c5d1043a1f50428e9105d4, type: 2}
   _levelLoadedEvent: {fileID: 11400000, guid: 73e55af56569cec4ab88c2d29678fc33, type: 2}
-  _neededLevel: {fileID: 407861236921580623, guid: 4d094d788296f2a48bc4af6d9c7cbba1, type: 3}
+  _neededLevel: {fileID: 311853700541904046, guid: 3e2bed2549d39424789ba5c073495002, type: 3}
 --- !u!4 &1678066625
 Transform:
   m_ObjectHideFlags: 0
@@ -8911,6 +8911,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc08f40e1a181f34bb99b19e7698c1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _exitPoint: {fileID: 0}
+  _curved: {fileID: 0}
+  _ingredientsSpawner: {fileID: 0}
+  _lavaSpawner: {fileID: 0}
+  _obstacleSpawner: {fileID: 0}
 --- !u!4 &4201986729275733528
 Transform:
   m_ObjectHideFlags: 0
@@ -9337,6 +9342,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: BurgerHeroes.Player.PlayerTransformController,
           Assembly-CSharp
         m_MethodName: SetWinRotate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8061961546772002813}
+        m_TargetAssemblyTypeName: BurgerHeroes.Player.PlayerMovement, Assembly-CSharp
+        m_MethodName: OnFinished
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
