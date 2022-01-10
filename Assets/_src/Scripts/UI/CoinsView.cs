@@ -60,5 +60,11 @@ namespace BurgerHeroes.UI
             _coinsCountText.text = _collectedCoinsCount.ToString();
             _animator.SetTrigger(ScaleCoinsPanelTrigger);
         }
+
+        public void MultiplyCoins(float multiplier) {
+            _collectedCoinsCount = (int)(_collectedCoinsCount * multiplier);
+            _coinsCountText.text = _collectedCoinsCount.ToString();
+            _animator.SetTrigger(ScaleCoinsPanelTrigger);
+        }
     }   
 }
