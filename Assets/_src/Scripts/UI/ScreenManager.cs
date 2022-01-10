@@ -22,6 +22,10 @@ namespace BurgerHeroes.UI
         private CoinsView _coinsPanel;
 
 
+        [SerializeField, ChildGameObjectsOnly, Required]
+        private GameObject _defeatScreen;
+
+
         private void Awake()
         {
             _coinsPanel.gameObject.SetActive(true);
@@ -51,7 +55,8 @@ namespace BurgerHeroes.UI
         }
 
         public void OpenDefeatScreen() {
-
+            _coinsPanel.gameObject.SetActive(false);
+            _defeatScreen.SetActive(true);
         }
     }   
 }
