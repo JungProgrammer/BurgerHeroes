@@ -326,6 +326,7 @@ MonoBehaviour:
   _curved: {fileID: 0}
   _ingredientsSpawner: {fileID: 236609176422258111}
   _lavaSpawner: {fileID: 5464187988678779478}
+  _obstacleSpawner: {fileID: 0}
 --- !u!114 &236609176422258111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,7 +434,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8368722655750445499, guid: d6fb01a466998d744b8ed857e63f3be4, type: 3}
+  - {fileID: 2100000, guid: c15fe14f02b686b4d835c107ff0dc10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -832,7 +833,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: d6fb01a466998d744b8ed857e63f3be4, type: 3}
+  - {fileID: 2100000, guid: 63210ccd9d659a941ac5ddacf6c99c92, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -986,7 +987,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8368722655750445499, guid: d6fb01a466998d744b8ed857e63f3be4, type: 3}
+  - {fileID: 2100000, guid: c15fe14f02b686b4d835c107ff0dc10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

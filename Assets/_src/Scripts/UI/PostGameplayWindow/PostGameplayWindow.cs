@@ -370,5 +370,11 @@ namespace BurgerHeroes.UI
                 _maxMultiplierColor,
                 valueOnTheInterval);
         }
+
+
+        public void ShowInterstitial()
+        {
+            InterstitialAd.Instance.ShowAd();
+        }
     }   
 }

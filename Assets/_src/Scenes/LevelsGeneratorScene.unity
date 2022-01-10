@@ -280,7 +280,7 @@ MonoBehaviour:
   - {fileID: 9145909200972671409, guid: 72f34ad27fe74a844b6891dc906d0e60, type: 3}
   - {fileID: 4270144014297164781, guid: 8064abf8d6727674da777469c634528e, type: 3}
   _finishPlatform: {fileID: 1980321015710716864, guid: e587702ff8f88714cae1ccffe6ce11e9, type: 3}
-  _countForSpawnPlatform: 13
+  _countForSpawnPlatform: 10
   _startSpawnPoint: {fileID: 6940398091981654495}
   _platformsHolder: {fileID: 342484730663864847}
 --- !u!4 &1097117373
@@ -472,7 +472,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
@@ -481,19 +481,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 3
-    - Name: $v
-      Entry: 3
-      Data: 3
+      Data: 8
     - Name: 
       Entry: 8
       Data: 
@@ -505,7 +493,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 3
-      Data: 0
+      Data: 6
     - Name: 
       Entry: 8
       Data: 
