@@ -32,6 +32,8 @@ namespace BurgerHeroes.Player
         {
             if (other.TryGetComponent(out Lava lava))
             {
+                Debug.Log("LAVA");
+
                 _currentDelay += Time.deltaTime;
 
                 if (_currentDelay >= _takeLavaDamageDelay)
