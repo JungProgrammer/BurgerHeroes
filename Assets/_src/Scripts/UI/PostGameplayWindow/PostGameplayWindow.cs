@@ -238,6 +238,7 @@ namespace BurgerHeroes.UI
         {
             StartCoroutine(RotateArrow());
 
+            _multiplyButton.gameObject.SetActive(true);
             _levelPanel.position = _closedLevelPanelPosition;
             _starsPanel.transform.position = _closedStarsPanelPosition;
             _gotCoinsPanel.position = _closedGotCoinsPanelPosition;

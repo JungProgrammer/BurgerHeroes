@@ -241,6 +241,11 @@ namespace BurgerHeroes.Food
             _collectedIngredients.Add(IngredientKey.Lettuce, 0);
             _collectedIngredients.Add(IngredientKey.Meat, 0);
             _collectedIngredients.Add(IngredientKey.Tomato, 0);
+            _collectedIngredients.Add(IngredientKey.Bacon, 0);
+            _collectedIngredients.Add(IngredientKey.Egg, 0);
+            _collectedIngredients.Add(IngredientKey.Jalapeno, 0);
+            _collectedIngredients.Add(IngredientKey.Onion, 0);
+            _collectedIngredients.Add(IngredientKey.Cucumber, 0);
 
             for (int i = 0; i < _collectedHamburgerParts.Count; i++)
             {
