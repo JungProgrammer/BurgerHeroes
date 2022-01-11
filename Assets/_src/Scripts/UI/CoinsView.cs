@@ -66,5 +66,13 @@ namespace BurgerHeroes.UI
             _coinsCountText.text = _collectedCoinsCount.ToString();
             _animator.SetTrigger(ScaleCoinsPanelTrigger);
         }
+
+        public void ReduceCoins(int amount) {
+            int coins = PlayerPrefs.GetInt("CoinsCount", 0);
+            coins -= amount;
+            _coinsCountText.text = coins.ToString();
+            _animator.SetTrigger(ScaleCoinsPanelTrigger);
+            PlayerPrefs.SetInt("CoinsCount", coins);
+        }
     }   
 }
