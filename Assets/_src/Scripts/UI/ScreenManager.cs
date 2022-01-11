@@ -25,6 +25,8 @@ namespace BurgerHeroes.UI
         [SerializeField, ChildGameObjectsOnly, Required]
         private GameObject _defeatScreen;
 
+        [SerializeField, ChildGameObjectsOnly, Required]
+        private GameObject _shopScreen;
 
         private void Awake()
         {
@@ -57,6 +59,16 @@ namespace BurgerHeroes.UI
         public void OpenDefeatScreen() {
             _coinsPanel.gameObject.SetActive(false);
             _defeatScreen.SetActive(true);
+        }
+
+        public void OpenShopScreen() {
+            _mainMenu.gameObject.SetActive(false);
+            _shopScreen.SetActive(true);
+        }
+
+        public void CloseShopScreen() {
+            _mainMenu.gameObject.SetActive(true);
+            _shopScreen.SetActive(false);
         }
     }   
 }

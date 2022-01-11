@@ -11,40 +11,37 @@ using UnityEngine;
 
 namespace BurgerHeroes.UI
 {
-    public class MainMenu : MonoBehaviour
-    {
-        [SerializeField, AssetsOnly, Required] 
+    public class MainMenu : MonoBehaviour {
+        [SerializeField, AssetsOnly, Required]
         private GameEvent _startGameplayEvent;
 
 
         [SerializeField, ChildGameObjectsOnly, Required]
         private TextMeshProUGUI _levelText;
 
-        
+
         [SerializeField, ChildGameObjectsOnly, Required]
         private NeededRecipeIngredients _neededMenuRecipeIngredients;
 
+        [SerializeField, AssetsOnly, Required]
+        private GameEvent _openShop;
 
-        private void OnEnable()
-        {
+        private void OnEnable() {
             LoadLevelText();
 
             AmplitudeManager.Instance.SendMenuLevelEvent();
         }
 
 
-        public void LoadMenuRecipeIngredients()
-        {
+        public void LoadMenuRecipeIngredients() {
             _neededMenuRecipeIngredients.DestroyOldIngredientsRecipe();
-            foreach (var levelIngredient in LevelsManager.Instance.GetLevelIngredients())
-            {
+            foreach (var levelIngredient in LevelsManager.Instance.GetLevelIngredients()) {
                 _neededMenuRecipeIngredients.AddIngredientRecipe(levelIngredient.Key, 0, levelIngredient.Value);
             }
         }
 
 
-        private void Awake()
-        {
+        private void Awake() {
             LoadLevelText();
         }
 
@@ -55,15 +52,17 @@ namespace BurgerHeroes.UI
         }
 
 
-        private void LoadLevelText()
-        {
+        private void LoadLevelText() {
             _levelText.text = "Recipe " + PlayerPrefs.GetInt("LevelNumber", 1);
         }
 
 
-        public void StartGameplay()
-        {
+        public void StartGameplay() {
             _startGameplayEvent.Raise();
+        }
+
+        public void OpenShop() {
+            _openShop.Raise();
         }
     }   
 }
