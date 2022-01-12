@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.2
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.036056835, g: 0.04514291, b: 0.061384827, a: 0.2}
+  m_IndirectSpecularColor: {r: 0.036056794, g: 0.04514281, b: 0.061384678, a: 0.2}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3241,7 +3241,7 @@ MonoBehaviour:
   _openNextLevel: {fileID: 11400000, guid: 0244ab0d67f406f4dab8b767d47b0a87, type: 2}
   _multiplierArrow: {fileID: 1332495305}
   _multiplierArrowRotationPoint: {fileID: 2101745159}
-  _multiplierArrowRotationSpeed: 200
+  _multiplierArrowRotationSpeed: 130
   _multiplierArrowLeftBorder: 145
   _multiplierArrowRightBorder: 38
   _multiplierArrowMaxValueAngle: 90

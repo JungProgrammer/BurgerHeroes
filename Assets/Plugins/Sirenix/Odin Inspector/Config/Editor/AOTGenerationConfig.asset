@@ -12,12 +12,87 @@ MonoBehaviour:
   m_Script: {fileID: 1726182683, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
   m_Name: AOTGenerationConfig
   m_EditorClassIdentifier: 
-  automateBeforeBuilds: 0
+  automateBeforeBuilds: 1
   deleteDllAfterBuilds: 1
   AutomateForAllAOTPlatforms: 1
   automateForPlatforms: 0900000014000000
-  lastScan: 637658357665391851
+  lastScan: 637776179516748928
   supportSerializedTypes:
+  - TypeName: BurgerHeroes.Gate.ButtonColors, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[BurgerHeroes.Gate.ButtonColors,
+      Assembly-CSharp],[UnityEngine.Material, UnityEngine.CoreModule]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[BurgerHeroes.Hats.HatVariants,
+      Assembly-CSharp],[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[BurgerHeroes.Hats.HatVariants,
+      Assembly-CSharp],[BurgerHeroes.Hats.ShopScreenHatButton, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[BurgerHeroes.Hats.HatVariants,
+      Assembly-CSharp],[UnityEngine.Sprite, UnityEngine.CoreModule]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[BurgerHeroes.Food.IngredientKey,
+      Assembly-CSharp],[BurgerHeroes.Food.Ingredient, Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.EnumEqualityComparer`1[[BurgerHeroes.Gate.ButtonColors,
+      Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.EnumEqualityComparer`1[[BurgerHeroes.Hats.HatVariants,
+      Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.GameObject, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: BurgerHeroes.Hats.HatVariants, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.IEqualityComparer`1[[BurgerHeroes.Gate.ButtonColors,
+      Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.IEqualityComparer`1[[BurgerHeroes.Hats.HatVariants,
+      Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: BurgerHeroes.Food.Ingredient, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Material, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Rendering.SerializedDictionary`2[[BurgerHeroes.Gate.ButtonColors,
+      Assembly-CSharp],[UnityEngine.Material, UnityEngine.CoreModule]], Unity.RenderPipelines.Core.Runtime
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Rendering.SerializedDictionary`2[[BurgerHeroes.Hats.HatVariants,
+      Assembly-CSharp],[UnityEngine.GameObject, UnityEngine.CoreModule]], Unity.RenderPipelines.Core.Runtime
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Rendering.SerializedDictionary`2[[BurgerHeroes.Hats.HatVariants,
+      Assembly-CSharp],[BurgerHeroes.Hats.ShopScreenHatButton, Assembly-CSharp]],
+      Unity.RenderPipelines.Core.Runtime
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Rendering.SerializedDictionary`2[[BurgerHeroes.Hats.HatVariants,
+      Assembly-CSharp],[UnityEngine.Sprite, UnityEngine.CoreModule]], Unity.RenderPipelines.Core.Runtime
+    IsCustom: 0
+    Emit: 1
+  - TypeName: BurgerHeroes.Hats.ShopScreenHatButton, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Sprite, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
   - TypeName: System.Collections.Generic.Dictionary`2[[BurgerHeroes.Food.IngredientKey,
       Assembly-CSharp],[BurgerHeroes.Food.HamburgerPart, Assembly-CSharp]], mscorlib
     IsCustom: 0
